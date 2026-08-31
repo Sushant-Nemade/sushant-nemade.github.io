@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sushant nemade — data, AI and digital transformation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#e5e4e0;
+    --ink:#000;
+    --white:#fff;
+    --amber:#f2c230;
+    --signal:#1f4fe0;
+    --mute:#6d6c67;
+    --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --grot:"Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--mono);
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding-left:14px;
+  }
+  .rail{position:fixed;top:0;left:0;width:14px;height:100%;background:var(--amber);z-index:5}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  .hero{padding:64px 0 44px}
+  .dot{width:13px;height:13px;border-radius:50%;background:var(--signal);margin-bottom:34px}
+  .nameplate{
+    font-family:var(--grot);font-weight:800;
+    font-size:clamp(2.9rem,12vw,7.4rem);
+    line-height:.82;letter-spacing:-.05em;
+    margin:0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 .16em;
+  }
+  .nameplate .cur{
+    width:.42em;height:.66em;background:var(--amber);
+    display:inline-block;margin-bottom:.08em;flex:none;
+    animation:blink 1.05s steps(1,end) infinite;
+  }
+  .role-line{
+    margin:20px 0 0;font-size:13.5px;letter-spacing:.01em;
+    border-top:2px solid var(--ink);padding-top:12px;max-width:58ch;
+  }
+  .standfirst{margin:16px 0 0;max-width:58ch;font-size:15px}
+  .standfirst b{font-weight:700}
+
+  .term{border:2px solid var(--ink);background:var(--paper);margin:8px 0 0;scroll-margin-top:18px}
+  .bar{
+    background:var(--ink);color:var(--paper);display:flex;align-items:center;gap:10px;
+    padding:8px 12px;font-size:12.5px;
+  }
+  .pips{display:flex;gap:5px}
+  .pip{width:9px;height:9px;background:var(--paper)}
+  .pip.on{background:var(--amber)}
+  .bar .path{opacity:.72}
+  .bar .stat{margin-left:auto;display:flex;align-items:center;gap:7px;opacity:.72}
+  .beacon{width:8px;height:8px;border-radius:50%;background:var(--signal)}
+
+  .screen{padding:18px 16px 8px;min-height:400px;max-height:60vh;overflow-y:auto;font-size:13.5px;line-height:1.62}
+  .screen::-webkit-scrollbar{width:10px}
+  .screen::-webkit-scrollbar-thumb{background:var(--ink)}
+  .screen::-webkit-scrollbar-track{background:transparent}
+
+  .line{white-space:pre-wrap;word-break:break-word;padding:0 16px;margin:0 -16px;cursor:pointer}
+  .line.gap{height:.75em;cursor:default}
+  .line.sel{background:var(--ink);color:var(--paper)}
+  .line.sel .meta,.line.sel .key{color:#a9a8a3}
+  .line.sel .sect{background:var(--amber);color:var(--ink)}
+  .line.sel a{color:var(--paper)}
+  .line.sel a:hover{background:var(--amber);color:var(--ink)}
+  .line.sel .err{background:var(--paper);color:var(--ink)}
+  .line.sel .ps{color:var(--amber)}
+  .screen:focus-visible{outline:2px solid var(--signal);outline-offset:-2px}
+  .cmdline{font-weight:700}
+  .cmdline .ps{color:var(--signal);font-weight:700}
+  .sect{display:inline-block;background:var(--amber);padding:1px 8px;font-weight:700;letter-spacing:.02em;margin:2px 0 3px}
+  .role{font-weight:700}
+  .meta{color:var(--mute)}
+  .key{display:inline-block;min-width:17ch;color:var(--mute)}
+  .bul::before{content:"— ";color:var(--amber);font-weight:700}
+  .err{background:var(--ink);color:var(--paper);padding:0 6px;display:inline-block}
+  a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:hover{background:var(--amber);text-decoration:none}
+
+  .entry{display:flex;align-items:baseline;gap:8px;padding:10px 16px 16px;border-top:1px dashed rgba(0,0,0,.35)}
+  .entry .ps{color:var(--signal);font-weight:700;font-size:13.5px}
+  #input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:13.5px;color:var(--ink);caret-color:transparent;padding:0}
+  .caret{width:8px;height:15px;background:var(--ink);animation:blink 1.05s steps(1,end) infinite;flex:none}
+  @keyframes blink{50%{opacity:0}}
+  .entry:focus-within{outline:2px solid var(--signal);outline-offset:2px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 0}
+  .chip{font:inherit;font-size:12.5px;background:transparent;border:1px solid var(--ink);padding:4px 11px;cursor:pointer;color:var(--ink)}
+  .chip:hover,.chip:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+
+  .fineprint{margin:22px 0 0;max-width:36ch;font-size:9.5px;line-height:1.45}
+
+  .band{background:var(--ink);color:var(--paper);margin-top:56px;padding:26px 0 30px}
+  .band .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;gap:22px;justify-content:space-between}
+  .mark{font-family:var(--grot);font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1;letter-spacing:-.04em;margin:0;color:var(--white)}
+  .band nav{display:flex;flex-direction:column;gap:3px;font-size:12.5px}
+  .band nav a{color:var(--paper)}
+  .band nav a:hover{background:var(--amber);color:var(--ink)}
+
+  @media (max-width:640px){
+    .hero{padding:44px 0 32px}
+    .screen{min-height:320px;max-height:none}
+    .key{display:block;min-width:0}
+  }
+  @media (prefers-reduced-motion:reduce){.caret{animation:none}}
+</style>
+</head>
+<body>
+<div class="rail"></div>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="dot" aria-hidden="true"></div>
+    <h1 class="nameplate">sushant<span>nemade</span><span class="cur" aria-hidden="true"></span></h1>
+    <p class="role-line">Data, AI and digital transformation — Erlangen, Germany</p>
+    <p class="standfirst">
+      Enterprise GenAI and RAG, data analytics and Power BI, and Power Platform automation.
+      Currently at <b>Siemens Healthineers</b>, previously <b>Fraunhofer IIS</b> and <b>Cognizant</b>,
+      alongside an M.Sc. in Information and Communication Technology at FAU.
+      Type a command below, or click one.
+    </p>
+  </section>
+
+  <section class="term" aria-label="Interactive portfolio terminal">
+    <div class="bar">
+      <span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i><i class="pip"></i></span>
+      <span class="path">sushant@erlangen ~ /portfolio</span>
+      <span class="stat"><span class="beacon" aria-hidden="true"></span>available</span>
+    </div>
+    <div class="screen" id="screen" role="log" aria-live="polite" tabindex="0"
+         aria-label="Command output. Click a line or use arrow keys to highlight it."></div>
+    <div class="entry" id="entry">
+      <span class="ps" aria-hidden="true">&gt;</span>
+      <input id="input" autocomplete="off" spellcheck="false" aria-label="Type a command, then press Enter">
+      <span class="caret" id="caret" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <div class="chips" id="chips"></div>
+
+  <p class="fineprint">
+    One HTML file, no framework and no build step. Commands support tab completion and arrow-key history.
+    Click any line of output to highlight it for reading, then step through with the arrow keys.
+    Everything on this page comes from the master profile.
+  </p>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <p class="mark">sushant nemade</p>
+    <nav>
+      <a href="mailto:sushantnemade15@gmail.com">sushantnemade15@gmail.com</a>
+      <a href="https://linkedin.com/in/sushant-nemade1998">linkedin.com/in/sushant-nemade1998</a>
+      <a href="tel:+4915732961656">+49 157 3296 1656</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const screenEl = document.getElementById('screen');
+const inputEl  = document.getElementById('input');
+const chipsEl  = document.getElementById('chips');
+const reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const h  = t => '<span class="sect">' + t + '</span>';
+const kv = (k,v) => '<span class="key">' + k + '</span>' + v;
+const b  = t => '<span class="bul">' + t + '</span>';
+const m  = t => '<span class="meta">' + t + '</span>';
+const GAP = '';
+
+const CONTENT = {
+  about: [
+    h('about'), GAP,
+    'Data, AI and digital transformation professional based in Erlangen. I take',
+    'ambiguous business problems through discovery, analysis, technical evaluation,',
+    'prototyping and rollout — and stay with them until people are actually using',
+    'the result.',
+    GAP,
+    'Most of my work sits between two rooms: the one where a retrieval pipeline gets',
+    'built, and the one where a process owner decides whether to trust it. That means',
+    'Python, SQL, Azure OpenAI and Power Platform on one side, and requirements,',
+    'value cases, GDPR, permission models and human-in-the-loop approvals on the other.',
+    GAP,
+    kv('based', 'Erlangen, Germany'),
+    kv('now', 'Working Student in Data Analytics and Data Science, Siemens Healthineers'),
+    kv('studying', 'M.Sc. Information and Communication Technology, FAU'),
+    kv('languages', 'English C1, German B1 heading to B2, Hindi, Marathi'),
+    GAP,
+    m('Run "help" for the full list of commands.')
+  ],
+
+  work: [
+    h('experience'), GAP,
+    '<span class="role">Working Student, Data Analytics and Data Science</span>',
+    m('Siemens Healthineers, Erlangen — March 2025 to present'),
+    b('Take AI use cases from a problem statement to a working internal solution on'),
+    '  Azure OpenAI and Copilot Studio, through scoping, prototyping, stakeholder',
+    '  review, rollout documentation and iteration',
+    b('Connect structured and unstructured sources into retrieval-ready data models'),
+    '  using MS SQL, Snowflake, SharePoint and Python, with freshness and quality checks',
+    b('Build Power BI dashboards and KPI views for operational, financial and'),
+    '  implementation-status reporting',
+    b('Ship Power Apps and Power Automate solutions that standardise recurring work and'),
+    '  give non-technical users a clear place to review and act on results',
+    b('Frame build-versus-adopt recommendations, and support GDPR, permission-model and'),
+    '  Responsible AI discussions before anything ships',
+    GAP,
+    '<span class="role">Working Student, Software Development</span>',
+    m('Fraunhofer IIS, Erlangen — April 2024 to March 2025'),
+    b('Assessed retrieval and RAG approaches on accuracy, usability, reliability and'),
+    '  maintainability; applied embeddings to analysis of unstructured documents',
+    b('Moved experimental ML work toward stable, scheduled, deployment-ready workflows'),
+    b('Set up traceable experimentation with Python, MLflow and GitLab — branching,'),
+    '  pull requests, code review, config management and reproducibility',
+    b('Translated supply-chain and research requirements into technical specifications'),
+    GAP,
+    '<span class="role">Programmer Analyst</span>',
+    m('Cognizant Technology Solutions, India — December 2020 to June 2022'),
+    b('Ran SAP e-commerce use cases, incidents and change requests end to end, from'),
+    '  inquiry through triage, root-cause analysis and implementation',
+    b('Built Python and Power BI reporting layers over ERP and operational data'),
+    b('Standardised manual workflows with low-code Power Platform solutions'),
+    GAP,
+    '<span class="role">Intern, Operations</span>',
+    m('KEP Cummins India, Pune — June to July 2019'),
+    b('Mapped engine-assembly workflows with Six Sigma methods and reported bottlenecks'),
+    '  and improvement options to management'
+  ],
+
+  projects: [
+    h('projects'), GAP,
+    '<span class="role">Urban change detection and change captioning</span>  ' + m("master's thesis"),
+    m('Fraunhofer IIS — July 2025 to January 2026'),
+    'Designed and evaluated AI-assisted pipelines for bi-temporal satellite imagery,',
+    'benchmarked on LEVIR-MCI. Looked at accuracy, directional bias and augmentation,',
+    'applied retrieval and RAG-style patterns to unstructured data, and turned the',
+    'evaluation into evidence-based adoption recommendations.',
+    m('python · pytorch · computer vision · rag patterns · model benchmarking'),
+    GAP,
+    '<span class="role">Enterprise GenAI and agentic automation</span>',
+    m('March to June 2026'),
+    'Explored LLM, RAG, assistant and agentic-workflow use cases on Azure OpenAI and',
+    'Copilot Studio. Compared candidates on value, effort, feasibility and automation',
+    'potential, and documented the technical and governance trade-offs behind each',
+    'build-versus-adopt call.',
+    m('azure openai · copilot studio · prompt engineering · human-in-the-loop'),
+    GAP,
+    '<span class="role">Glottal area segmentation</span>',
+    m('January to February 2025'),
+    'U-Net segmentation workflow in PyTorch, evaluated pixel-wise against the BAGLS',
+    'benchmark with reproducible data preparation and result analysis.',
+    m('pytorch · u-net · medical imaging'),
+    GAP,
+    '<span class="role">Autonomous vehicle control</span>',
+    m('June to July 2024'),
+    'Visual driving-action model on a pretrained ResNet18 backbone with an LSTM layer',
+    'carrying information from previous frames, wired into vehicle-control decisions in',
+    'OpenAI Gym and demonstrated in live simulation.',
+    m('pytorch · resnet18 · lstm · openai gym'),
+    GAP,
+    '<span class="role">Solar panel fault classification</span>',
+    m('January to February 2024'),
+    'Fine-tuned ResNet50 to classify cracked and inactive panels, framed as a',
+    'predictive-maintenance and inspection use case for renewable-energy assets.',
+    m('pytorch · resnet50 · augmentation · hyperparameter tuning'),
+    GAP,
+    '<span class="role">Visible light communication</span>',
+    m('June 2019 to May 2020'),
+    '4-bit data transmission over visible light on an ARM microcontroller, using PWM',
+    'to transmit and input capture to receive.',
+    m('arm mcu · pwm · bit banging · embedded c')
+  ],
+
+  skills: [
+    h('hands-on'), GAP,
+    kv('genai', 'Azure OpenAI, Copilot Studio, RAG, embeddings, prompt engineering'),
+    kv('ml and cv', 'PyTorch, scikit-learn, ResNet18/50, U-Net, LSTM, benchmarking'),
+    kv('programming', 'Python, pandas, NumPy, SQL, MS SQL, PL/SQL'),
+    kv('data', 'Snowflake, SharePoint, data modelling, ETL, quality checks'),
+    kv('bi', 'Power BI, DAX, KPI and management reporting, Tableau'),
+    kv('automation', 'Power Automate, Power Apps, approval workflows'),
+    kv('engineering', 'Git, GitLab, MLflow, code review, CI/CD, experiment tracking'),
+    GAP,
+    h('working knowledge'), GAP,
+    kv('concepts', 'LangChain, AutoGen, Semantic Kernel, vector databases, AI agents'),
+    kv('platforms', 'Azure AI Search, Azure ML, AWS, dbt, TensorFlow'),
+    kv('vision', 'YOLOv8, Vision Transformers, SAM2, GANs'),
+    GAP,
+    h('the non-code half'), GAP,
+    kv('governance', 'GDPR, Responsible AI, permission models, guardrails, human oversight'),
+    kv('strategy', 'Use-case framing, value cases, build-versus-adopt, KPI definition'),
+    kv('delivery', 'Requirements engineering, stakeholder advisory, agile, documentation'),
+    GAP,
+    m('Split deliberately: the first block is work I have done, the second is'),
+    m('familiarity I would not claim as production experience.')
+  ],
+
+  education: [
+    h('education'), GAP,
+    '<span class="role">M.Sc. Information and Communication Technology</span>',
+    m('Friedrich-Alexander-Universität Erlangen-Nürnberg — since October 2022'),
+    kv('grade', '1.8'),
+    'Modules include Advanced Topics in Deep Learning, Pattern Recognition and',
+    'Analysis, Machine Learning in Signal Processing, and Connected Mobility and',
+    'Autonomous Driving.',
+    GAP,
+    '<span class="role">B.Eng. Electronics and Telecommunication Engineering</span>',
+    m('Savitribai Phule Pune University, India — 2016 to 2020'),
+    kv('grade', '1.6'),
+    'Modules include Digital Signal Processing, Optimization Techniques, Internet of',
+    'Things, Computer Networks and Operating Systems.',
+    GAP,
+    h('certifications'), GAP,
+    b('Deep Learning Specialization, DeepLearning.AI'),
+    b('Python Data Structures, University of Michigan'),
+    b('Core Java and SQL/PL-SQL, Cognizant Academy'),
+    b('Raspberry Pi Essential Training for IoT, LinkedIn Learning'),
+    b('Certificate of Merit in System Design, MIT Pune')
+  ],
+
+  contact: [
+    h('contact'), GAP,
+    kv('email', '<a href="mailto:sushantnemade15@gmail.com">sushantnemade15@gmail.com</a>'),
+    kv('phone', '<a href="tel:+4915732961656">+49 157 3296 1656</a>'),
+    kv('linkedin', '<a href="https://linkedin.com/in/sushant-nemade1998">linkedin.com/in/sushant-nemade1998</a>'),
+    kv('location', 'Erlangen, Germany'),
+    kv('languages', 'English C1, German B1 to B2, Hindi, Marathi'),
+    GAP,
+    m('Open to roles across data science, AI engineering, analytics and AI strategy.')
+  ]
+};
+
+const HELP = [
+  h('commands'), GAP,
+  kv('about', 'who I am and how I work'),
+  kv('work', 'roles and what I delivered'),
+  kv('projects', 'thesis and project portfolio'),
+  kv('skills', 'hands-on versus conceptual'),
+  kv('education', 'degrees and certifications'),
+  kv('contact', 'how to reach me'),
+  kv('resume', 'download a plain-text copy'),
+  kv('clear', 'wipe the screen'),
+  GAP,
+  m('Tab completes. Up and down walk through what you typed before.'),
+  m('Click any line of output to highlight it, then use up and down to move'),
+  m('through the lines. Escape clears the highlight and returns to typing.')
+];
+
+const BOOT = [
+  m('erlangen shell 1.0 — portfolio session'),
+  m('loaded: 4 roles, 6 projects, 1 thesis at fraunhofer iis'),
+  GAP,
+  'Type <span class="role">help</span> to see what this understands.',
+  GAP
+];
+
+let queue = [], printing = false;
+
+function push(html, cls){
+  const d = document.createElement('div');
+  d.className = 'line' + (cls ? ' ' + cls : '');
+  if (html === '') d.classList.add('gap');
+  else d.innerHTML = html;
+  screenEl.appendChild(d);
+  screenEl.scrollTop = screenEl.scrollHeight;
+}
+function print(lines){
+  if (reduced){ lines.forEach(l => push(l)); return; }
+  queue = queue.concat(lines);
+  if (!printing) drain();
+}
+function drain(){
+  printing = true;
+  const next = queue.shift();
+  if (next === undefined){ printing = false; return; }
+  push(next);
+  setTimeout(drain, 16);
+}
+
+const NAMES = ['about','work','projects','skills','education','contact','resume','help','clear'];
+
+const termEl = document.querySelector('.term');
+function revealTerminal(){
+  const r = termEl.getBoundingClientRect();
+  const offscreen = r.top > 24 || r.bottom > window.innerHeight;
+  if (!offscreen) return;
+  termEl.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block: 'start'});
+}
+
+function plainResume(){
+  const strip = s => s.replace(/<[^>]*>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+  let out = ['SUSHANT NEMADE','Data, AI and Digital Transformation','Erlangen, Germany','sushantnemade15@gmail.com | +49 157 3296 1656','',''];
+  ['about','work','projects','skills','education','contact'].forEach(k => {
+    out = out.concat(CONTENT[k].map(strip), '', '');
+  });
+  return out.join('\n');
+}
+
+function run(raw){
+  const cmd = raw.trim().toLowerCase();
+  push('<span class="ps">&gt;</span> ' + raw.replace(/</g,'&lt;'), 'cmdline');
+  if (!cmd) return;
+
+  if (cmd === 'clear'){ screenEl.innerHTML = ''; queue = []; selEl = null; return; }
+  if (cmd === 'help'){ print(HELP.concat([''])); return; }
+  if (cmd === 'resume'){
+    const blob = new Blob([plainResume()], {type:'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'sushant-nemade-profile.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    print(['Saved sushant-nemade-profile.txt to your downloads.','']);
+    return;
+  }
+  if (CONTENT[cmd]){ print(CONTENT[cmd].concat([''])); return; }
+
+  const near = NAMES.find(n => n.startsWith(cmd.slice(0,3)));
+  print([
+    '<span class="err">' + cmd.replace(/</g,'&lt;') + "</span> isn't a command here." +
+    (near ? ' Did you mean <span class="role">' + near + '</span>?' : ' Type <span class="role">help</span> for the list.'),
+    ''
+  ]);
+}
+
+const history = [];
+let hIndex = -1;
+
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter'){
+    const v = inputEl.value;
+    if (v.trim()){ history.push(v); hIndex = history.length; }
+    inputEl.value = '';
+    revealTerminal();
+    run(v);
+  } else if (e.key === 'Tab'){
+    e.preventDefault();
+    const p = inputEl.value.trim().toLowerCase();
+    const hit = NAMES.filter(n => n.startsWith(p));
+    if (p && hit.length === 1) inputEl.value = hit[0];
+    else if (p && hit.length > 1) print([m(hit.join('   ')), '']);
+  } else if (e.key === 'ArrowUp'){
+    e.preventDefault();
+    if (hIndex > 0){ hIndex--; inputEl.value = history[hIndex]; }
+  } else if (e.key === 'ArrowDown'){
+    e.preventDefault();
+    if (hIndex < history.length - 1){ hIndex++; inputEl.value = history[hIndex]; }
+    else { hIndex = history.length; inputEl.value = ''; }
+  }
+});
+
+document.getElementById('entry').addEventListener('click', () => inputEl.focus());
+
+/* ── line highlighting ────────────────────────── */
+let selEl = null;
+
+function readableLines(){
+  return Array.prototype.slice.call(screenEl.querySelectorAll('.line:not(.gap)'));
+}
+function select(el){
+  if (selEl) selEl.classList.remove('sel');
+  selEl = el || null;
+  if (selEl){
+    selEl.classList.add('sel');
+    selEl.scrollIntoView({block:'nearest'});
+  }
+}
+
+screenEl.addEventListener('click', e => {
+  if (e.target.tagName === 'A') return;
+  const line = e.target.closest('.line');
+  if (!line || line.classList.contains('gap')) return;
+  select(line === selEl ? null : line);
+  screenEl.focus({preventScroll:true});
+});
+
+screenEl.addEventListener('keydown', e => {
+  const L = readableLines();
+  if (!L.length) return;
+  const i = L.indexOf(selEl);
+
+  if (e.key === 'ArrowDown'){
+    e.preventDefault();
+    select(L[Math.min(i + 1, L.length - 1)]);
+  } else if (e.key === 'ArrowUp'){
+    e.preventDefault();
+    select(L[Math.max(i - 1, 0)]);
+  } else if (e.key === 'Escape'){
+    e.preventDefault();
+    select(null);
+    inputEl.focus({preventScroll:true});
+  }
+});
+
+NAMES.filter(n => n !== 'clear').forEach(n => {
+  const btn = document.createElement('button');
+  btn.className = 'chip';
+  btn.textContent = n;
+  btn.addEventListener('click', () => { revealTerminal(); run(n); inputEl.focus({preventScroll:true}); });
+  chipsEl.appendChild(btn);
+});
+
+print(BOOT);
+inputEl.focus({preventScroll:true});
+</script>
+</body>
+</html>
