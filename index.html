@@ -330,6 +330,13 @@
           <p class="project-stack">Python · Click · Groq adapter · SHA-256 caching · AGPLv3</p>
           <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/Doclify">Hema Kalyan's AGPLv3 Doclify</a>. Offline workflows, installed packages and Linux/Windows CI pass. Offline output is structural, not AI inference; live Groq generation remains unverified. This is a local CLI, not a hosted AI service.</p><a href="https://github.com/Sushant-Nemade/Doclify/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://github.com/Sushant-Nemade/Doclify/releases/tag/v0.3.0-reference">Download reference CLI and source</a></details>
         </article>
+        <article class="project compact-project" data-project="software-intake-gatekeeper" data-category="Developer tools">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/software-intake-gatekeeper">Software Intake Gatekeeper</a></h4>
+          <p class="project-status">Tested alpha tool</p>
+          <p class="project-summary">Read-only intake checks for third-party apps and binaries: evidence-backed SBOM, known vulnerabilities, Electron hardening and an approve/review/reject policy gate.</p>
+          <p class="project-stack">Python · CycloneDX · SARIF · OSV.dev · GitHub Actions</p>
+          <details class="case-study"><summary>Scope</summary><p>Original code. Go build info, npm/ASAR and NuGet inventories plus Electron fuse and webPreferences rules; vulnerability lookup is opt-in and sends only package name, version and ecosystem. Linux/Windows CI and a live-OSV action run pass against a fictional demo. Findings are version-level evidence, not reachability analysis.</p><a href="https://github.com/Sushant-Nemade/software-intake-gatekeeper#verification">Verification evidence</a></details>
+        </article>
       </div>
     </section>
     <section class="catalog-group" aria-labelledby="prototype-heading">
