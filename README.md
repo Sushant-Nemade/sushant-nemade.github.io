@@ -162,7 +162,7 @@ These technologies are represented in public project implementations. They are n
 
 The portfolio at [sushant-nemade.github.io](https://sushant-nemade.github.io/) combines a static project showcase with the existing **interactive terminal interface**:
 
-- **No framework or build step:** HTML, CSS and JavaScript remain in [index.html](index.html), with four local WebP evidence images. Google Fonts are optional remote font resources with local fallbacks.
+- **No framework or build step:** HTML, CSS and JavaScript remain in [index.html](index.html), with four local WebP evidence images. The Archivo and JetBrains Mono fonts are self-hosted in [assets/fonts](assets/fonts) under the SIL Open Font License 1.1, so the page makes no third-party requests.
 - **Canonical project content:** Four featured articles and ten categorized project entries are ordinary semantic HTML. Terminal project output and the selected resume use this same markup, avoiding a separately maintained project dataset.
 - **Interactive Terminal Shell:** Supports `about`, `work`, `projects`, `research`, `github`, `skills`, `education`, `contact`, `help`, `resume` and `clear`.
 - **Content separation:** `projects` contains the fourteen public engineering/product repositories; `research` preserves all six earlier case studies; `github` includes all seventeen public repository links.
