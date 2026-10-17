@@ -18,7 +18,7 @@ Most of my work sits at the intersection of two critical spaces: **where data & 
 
 I specialize in taking AI initiatives from problem scoping and architecture through prototyping, stakeholder alignment, compliance reviews (GDPR, permission models, Responsible AI), and production rollout.
 
-Alongside enterprise and research work, I publish AI reference implementations, local-first tools and product prototypes. The website features four engineering systems and a categorized catalog of ten additional projects, with implementation status and integration limits kept explicit.
+Alongside enterprise and research work, I publish AI reference implementations, geospatial computer-vision research, privacy-first developer tools and product prototypes. The website features four flagship engineering systems and a categorized catalog of nineteen additional public projects, with implementation status, verification evidence and integration boundaries kept explicit.
 
 - 💼 **Current Role:** Working Student in Data Analytics & Data Science at **Siemens Healthineers** (Erlangen)
 - 🔬 **Previous Experience:** Software Development at **Fraunhofer IIS** | Programmer Analyst at **Cognizant**
@@ -74,6 +74,14 @@ Alongside enterprise and research work, I publish AI reference implementations, 
 | [Security Checker](https://github.com/Sushant-Nemade/security-checker) | TypeScript, SARIF, GitHub Actions integration | Local credential screening, redacted findings, CLI SARIF and a browser text-file scanner. | Working developer tool; findings are screening signals, not security guarantees. |
 | [Subscription Auditor](https://github.com/Sushant-Nemade/subscription-auditor) | TypeScript, Next.js, CSV/PDF processing | Browser-local statement analysis, sample data and documented detector assumptions. | Tested local-first application; estimates require review and scanned PDFs need OCR. |
 
+### Applied AI, Computer Vision & Multi-Agent Systems
+
+| Project | Implemented Scope | Boundary |
+|---|---|---|
+| [Urban Change Detection & Change Captioning](https://github.com/Sushant-Nemade/urban-change-detection-captioning) *(Master's Thesis)* | Dual-head SegFormer MiT-B1 + Transformer MCI model for bi-temporal satellite road/building segmentation and change captioning on LEVIR-MCI (10,077 original and 15,115 augmented pairs), bidirectional temporal-reversal ($A \leftrightarrow B$) augmentation for removal/deconstruction cases, `urban-change` CLI, Streamlit workbench, FastAPI predictor, 31 pytest/integration checks and SHA-256 verified weights ([Model](https://huggingface.co/sushantnemade/MCI_augmented) · [Dataset](https://huggingface.co/datasets/sushantnemade/LEVIR-MCI-augmented) · [Validation](https://github.com/Sushant-Nemade/urban-change-detection-captioning/blob/main/docs/results.md)). | Research implementation for aligned 256×256 urban satellite pairs; CPU inference and numerical equivalence ($\le 3.81 \times 10^{-6}$) verified, while full-dataset benchmark reproduction, GPU/AMP training and mixed upstream licensing (MIT Change-Agent/COCO-caption plus NVIDIA non-commercial SegFormer terms) remain documented boundaries. |
+| [AI Werewolf Arena](https://github.com/Sushant-Nemade/ai-werewolf-arena) | Seven-agent social deduction arena with per-seat information asymmetry, TF-IDF episodic RAG memory, fail-closed structured-output guardrails, decision tracing, 27 deterministic tests and a batch ELO simulator. | Session state is in-memory and the default mock provider is a deterministic heuristic baseline; live multi-round LLM benchmarking requires Ollama or OpenAI configuration. |
+| [NeuroDrive](https://github.com/Sushant-Nemade/neurodrive) | Browser-based self-driving neuroevolution arena where 180 ray-cast sensor agents evolve 8→12→2 neural policies live via tournament selection, crossover and mutation in TypeScript and HTML5 Canvas with zero ML frameworks. | Client-side kinematic simulation with `localStorage` policy checkpointing and JSON export/import; not a photorealistic vehicle dynamics engine. |
+
 ### Responsible Automation
 
 | Project | Implemented Scope | Boundary |
@@ -82,12 +90,18 @@ Alongside enterprise and research work, I publish AI reference implementations, 
 | [WhatsApp Business Assistant](https://github.com/Sushant-Nemade/whatsapp-assistant) | Meta webhook verification, HMAC validation, intent routing and optional order lookup. | Simulator sends no real messages; deduplication is in-memory and booking is not implemented. |
 | [AI Chief of Staff](https://github.com/Sushant-Nemade/ai-chief-of-staff) | Protected Calendar/Gmail briefing route and optional email delivery. | Fictional public data; durable OAuth is not implemented and scheduling requires configuration. |
 | [Voice Note Idea Catcher](https://github.com/Sushant-Nemade/voice-note-idea-catcher) | Browser recording, transcript editing, rules-based action extraction and optional model endpoints. | No configured authentication or permanent server-backed note archive. |
+| [AI Blog Publisher](https://github.com/Sushant-Nemade/ai-blog-publisher) | Attributed BlogBoard derivative with private drafts, Pydantic validation, digest-bound human approval, local staged publication and a DOMPurify-sanitized [public reader](https://sushant-nemade.github.io/ai-blog-publisher/). | Tested reference implementation ([release evidence](https://github.com/Sushant-Nemade/ai-blog-publisher/blob/main/docs/RELEASE_STATUS.md)); displayed article is a synthetic fixture and live Groq, search and R2 integrations remain unverified. |
 
-### Data Applications
+### Data Applications and Developer Tools
 
 | Project | Implemented Scope | Boundary |
 |---|---|---|
 | [Money Dashboard](https://github.com/Sushant-Nemade/money-dashboard) | Prisma/SQLite income records, protected APIs and integer-cent revenue aggregation. | Single admin token and fictional public samples; Stripe, Shopify and QuickBooks are not connected. |
+| [GitPulse Audience Workspace](https://github.com/Sushant-Nemade/gitpulse) | Original SQLite/FastAPI GitHub audience tracker with atomic snapshots, numeric-ID rename safety, append-only relationship events, refollow-safe lost followers and a [sample dashboard](https://sushant-nemade.github.io/gitpulse/). | Tested reference implementation ([release evidence](https://github.com/Sushant-Nemade/gitpulse/blob/main/docs/RELEASE_STATUS.md)); one public REST sync verified, while hosted private API and unattended scheduling remain unconfigured. |
+| [Market Insight](https://github.com/Sushant-Nemade/MarketInsight) | Attributed GPLv3 financial research workbench with source-dated Yahoo Finance statements/history, Chart.js views, owner-authenticated SQLite report history, optional grounded synthesis and a [synthetic reference](https://sushant-nemade.github.io/MarketInsight/) ([release](https://github.com/Sushant-Nemade/MarketInsight/releases/tag/v0.2.0-reference)). | 37 Python and 20 browser checks plus real AAPL quote/history smoke pass ([release evidence](https://github.com/Sushant-Nemade/MarketInsight/blob/main/docs/RELEASE_STATUS.md)); paid AI inference and managed private hosting remain unverified; research only, not investment advice. |
+| [Doclify](https://github.com/Sushant-Nemade/Doclify) | Attributed AGPLv3 documentation CLI (`doclify-portfolio`) with bounded source discovery, SHA-256 incremental caching and digest-bound reviewed README publication ([reference release](https://github.com/Sushant-Nemade/Doclify/releases/tag/v0.3.0-reference)). | Offline structural workflows, wheel packaging and Linux/Windows CI pass ([release evidence](https://github.com/Sushant-Nemade/Doclify/blob/main/docs/RELEASE_STATUS.md)); live Groq inference remains unverified. |
+| [Software Intake Gatekeeper](https://github.com/Sushant-Nemade/software-intake-gatekeeper) | Read-only binary and application intake CLI & GitHub Action (`v0.2.2`): CycloneDX 1.6 SBOM from Go, npm/ASAR and NuGet manifests, Electron fuse/webPreferences rules, opt-in OSV lookup, version-diff update gate and SARIF output ([PyPI](https://pypi.org/project/software-intake-gatekeeper/) · [Marketplace](https://github.com/marketplace/actions/software-intake-gatekeeper)). | 113+ tests and Linux/Windows/macOS live-OSV action runs pass; findings are version-level and configuration evidence, not exploit reachability analysis. |
+| [Privacy Flow Inspector](https://github.com/Sushant-Nemade/privacy-flow-inspector) | Offline HAR privacy gate (`v0.2.0`): persona matching across raw/hashed/Base64 forms, checksum-verified IBAN/Steuer-ID/KVNR detectors, health-data fields, third-party eTLD+1 inventory, SARIF and self-checked redacted HAR export ([PyPI](https://pypi.org/project/privacy-flow-inspector/) · [Marketplace](https://github.com/marketplace/actions/privacy-flow-inspector)). | Cross-platform CI with real Chromium HAR re-recording passes; provides technical evidence for GDPR/privacy reviews, not legal advice. |
 
 ### Product Prototype Lab
 
@@ -103,15 +117,16 @@ Alongside enterprise and research work, I publish AI reference implementations, 
 
 - [GitHub Profile Systems Console](https://github.com/Sushant-Nemade/Sushant-Nemade): generated profile assets and automation.
 - [Interactive Portfolio Source](https://github.com/Sushant-Nemade/sushant-nemade.github.io): this HTML/CSS/JavaScript website.
+- [AI Project Gallery](https://github.com/Sushant-Nemade/ai-project-gallery): categorized AI project catalog, upstream attribution and [pending-work register](https://github.com/Sushant-Nemade/ai-project-gallery/blob/main/docs/PROJECT_STATUS_AND_PENDING_WORK.md).
 - [DSSS Homework 2](https://github.com/Sushant-Nemade/dsss_homework_2): earlier Python mathematics-quiz coursework.
 
-The inventory was reviewed on **October 1, 2026**: fourteen public project repositories and three supporting/learning repositories. Repository publication dates do not establish development duration. Temporary Cloudflare Quick Tunnels are not durable deployments; stable repository links are used instead of preview buttons. Tests, integrations and production readiness are not assumed across all projects.
+The inventory was reviewed on **October 18, 2026**: twenty-three public project repositories and four supporting/learning repositories. Repository publication dates do not establish development duration. Temporary Cloudflare Quick Tunnels are not durable deployments; stable repository links and verified GitHub Pages references are used instead. Tests, integrations and production readiness are documented per repository rather than assumed across all projects.
 
 ## 🔬 Research & Professional Case Studies
 
 | Project | Tech Stack | Highlights |
 |---|---|---|
-| **Urban Change Detection & Change Captioning** *(Master's Thesis)* | `Python` `PyTorch` `Computer Vision` `RAG Patterns` `LEVIR-MCI` | Designed and benchmarked AI-assisted multi-temporal satellite imagery pipelines at Fraunhofer IIS with directional bias analysis and actionable adoption recommendations. |
+| **[Urban Change Detection & Change Captioning](https://github.com/Sushant-Nemade/urban-change-detection-captioning)** *(Master's Thesis — FAU & Fraunhofer IIS)* | `Python` `PyTorch` `SegFormer MiT-B1` `Transformer` `LEVIR-MCI` `Streamlit` `FastAPI` | Adapted the dual-head MCI vision-language model for joint road/building change segmentation and captioning across 10,077 original and 15,115 augmented satellite image pairs; engineered bidirectional temporal-reversal ($A \leftrightarrow B$) augmentation for removal/deconstruction scenarios, packaged a reproducible CLI/Streamlit/FastAPI workflow with 31 pytest checks and SHA-256 verified weights ([HF Model](https://huggingface.co/sushantnemade/MCI_augmented) · [HF Dataset](https://huggingface.co/datasets/sushantnemade/LEVIR-MCI-augmented)). |
 | **Enterprise GenAI & Agentic Workflows** | `Azure OpenAI` `Copilot Studio` `Prompt Engineering` `Human-in-the-loop` | Formulated and evaluated agentic assistants and RAG architectures against value, feasibility, and enterprise governance criteria. |
 | **Glottal Area Segmentation** | `PyTorch` `U-Net` `Medical Imaging` `BAGLS Benchmark` | Developed a reproducible deep learning segmentation pipeline evaluated pixel-wise against the BAGLS medical imaging dataset. |
 | **Autonomous Vehicle Control** | `PyTorch` `ResNet18` `LSTM` `OpenAI Gym` | Created a vision-based sequential driving decision model combining spatial CNN representations with temporal LSTM memory in closed-loop simulation. |
@@ -131,11 +146,11 @@ The inventory was reviewed on **October 1, 2026**: fourteen public project repos
 - **Engineering & MLOps:** Git, GitLab CI/CD, MLflow, Experiment Tracking, Code Reviews
 
 ### **Public Project Engineering**
-- **AI Services:** FastAPI, Ollama, local inference, RAG evaluation and guardrails
-- **Web:** TypeScript, Next.js, Express and browser-local processing
-- **Persistence:** PostgreSQL, SQLite, Prisma and Alembic migrations
-- **System Boundaries:** API authentication, signed webhooks, typed contracts and fail-closed QA
-- **Operations:** Docker configuration, GitHub Actions and Prometheus/Grafana telemetry
+- **AI & Vision-Language Services:** FastAPI, Ollama, LangGraph, SegFormer MiT-B1, Transformer decoders, local inference, RAG evaluation and guardrails
+- **Web & Interactive Visualization:** TypeScript, React, Next.js, Express, Chart.js, HTML5 Canvas and browser-local processing
+- **Persistence & Caching:** PostgreSQL, SQLite, Prisma, Alembic migrations and SHA-256 content-addressed caching
+- **System & Privacy Boundaries:** API authentication, signed webhooks, CycloneDX 1.6 SBOMs, SARIF code scanning, offline HAR privacy gates and fail-closed QA
+- **Operations & Packaging:** Docker configuration, GitHub Actions, PEP 740 PyPI provenance attestations and Prometheus/Grafana telemetry
 
 These technologies are represented in public project implementations. They are not blanket claims of production deployment or verified provider integration.
 
@@ -148,6 +163,7 @@ These technologies are represented in public project implementations. They are n
 ## 🎓 Education & Certifications
 
 - **M.Sc. Information and Communication Technology** — Friedrich-Alexander-Universität Erlangen-Nürnberg (*Grade: 1.8*)
+  - *Master's Thesis:* [Urban Change Detection & Change Captioning](https://github.com/Sushant-Nemade/urban-change-detection-captioning) — Bi-temporal satellite vision-language modeling with temporal reversal augmentation
   - *Focus:* Advanced Deep Learning, Pattern Recognition, Signal Processing ML, Connected Mobility & Autonomous Driving
 - **B.Eng. Electronics and Telecommunication Engineering** — Savitribai Phule Pune University (*Grade: 1.6*)
 - **Certifications:**
@@ -163,17 +179,17 @@ These technologies are represented in public project implementations. They are n
 The portfolio at [sushant-nemade.github.io](https://sushant-nemade.github.io/) combines a static project showcase with the existing **interactive terminal interface**:
 
 - **No framework or build step:** HTML, CSS and JavaScript remain in [index.html](index.html), with four local WebP evidence images. The Archivo and JetBrains Mono fonts are self-hosted in [assets/fonts](assets/fonts) under the SIL Open Font License 1.1, so the page makes no third-party requests.
-- **Canonical project content:** Four featured articles and ten categorized project entries are ordinary semantic HTML. Terminal project output and the selected resume use this same markup, avoiding a separately maintained project dataset.
+- **Canonical project content:** Four featured articles and nineteen categorized project entries are ordinary semantic HTML. Terminal project output and the selected resume use this same markup, avoiding a separately maintained project dataset.
 - **Interactive Terminal Shell:** Supports `about`, `work`, `projects`, `research`, `github`, `skills`, `education`, `contact`, `help`, `resume` and `clear`.
-- **Content separation:** `projects` contains the fourteen public engineering/product repositories; `research` preserves all six earlier case studies; `github` includes all seventeen public repository links.
-- **Selected resume:** The plain-text export includes four featured public projects with repository URLs, all six research/professional case studies and the existing professional sections. Smaller prototypes stay in the website catalog rather than the default resume.
+- **Content separation:** `projects` contains the twenty-three public engineering, research and product repositories; `research` preserves all six research and professional case studies (with direct repository and Hugging Face links for the published Master's thesis); `github` includes all twenty-seven public repository links.
+- **Selected resume:** The plain-text export includes four featured public projects with repository URLs, all six research/professional case studies (including the Master's thesis repository and artifact links) and the existing professional sections. Smaller prototypes stay in the website catalog rather than the default resume.
 - **Productivity & Accessibility:**
   - Tab auto-completion and command history recall (Up/Down arrow keys)
   - Interactive line highlighting with keyboard navigation
   - Instant plain-text resume download generation via client-side Blob API
   - Responsive desktop/mobile layouts, bounded terminal scrolling and visible keyboard focus
   - Native expandable case-study/scope details and reduced-motion support
-  - All fourteen project articles and their repository links remain readable without JavaScript; terminal commands require JavaScript
+  - All twenty-three project articles and their repository links remain readable without JavaScript; terminal commands require JavaScript
 
 Open [index.html](index.html) directly in a browser. No local server, runtime GitHub API calls or provider keys are required. Preserve the relative `assets/projects` directory when publishing to GitHub Pages.
 

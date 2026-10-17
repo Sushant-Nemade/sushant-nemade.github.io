@@ -174,7 +174,7 @@
     <h1 class="nameplate"><span>sushant</span> <span>nemade<span class="cur" aria-hidden="true"></span></span></h1>
     <p class="role-line">Data, AI and digital transformation — Erlangen, Germany</p>
     <p class="standfirst">
-      Enterprise AI, analytics and automation. Building public AI systems and local-first tools.
+      Enterprise AI, analytics and automation. Building public AI systems, geospatial vision-language research and privacy-first developer tools.
       Currently at <b>Siemens Healthineers</b>, previously <b>Fraunhofer IIS</b> and <b>Cognizant</b>,
       alongside an M.Sc. at FAU.
     </p>
@@ -264,8 +264,34 @@
   <section class="portfolio-section" id="catalog" aria-labelledby="catalog-heading">
     <div class="section-heading">
       <h2 id="catalog-heading">Project catalog</h2>
-      <span class="meta">Automation, data and product prototypes</span>
+      <span class="meta">Vision-language research, agentic systems, developer tools and prototypes</span>
     </div>
+    <section class="catalog-group" aria-labelledby="vision-heading">
+      <h3 class="catalog-heading" id="vision-heading">Applied AI, computer vision and simulation</h3>
+      <div class="catalog-grid">
+        <article class="project compact-project" data-project="urban-change-detection-captioning" data-category="Applied AI and computer vision">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/urban-change-detection-captioning">Urban Change Detection &amp; Change Captioning</a></h4>
+          <p class="project-status">Master's thesis · tested research implementation</p>
+          <p class="project-summary">Bi-temporal satellite change segmentation (unchanged, road, building) and natural-language captioning with bidirectional temporal-reversal augmentation, CLI lifecycle, Streamlit workbench and FastAPI inference.</p>
+          <p class="project-stack">Python · PyTorch · SegFormer MiT-B1 · Transformer decoder · Streamlit · FastAPI</p>
+          <details class="case-study"><summary>Scope</summary><p>Master's thesis adapting the dual-head MCI architecture from <a href="https://github.com/Chen-Yang-Liu/Change-Agent">Change-Agent / LEVIR-MCI</a> (Liu et al., IEEE TGRS 2024) with bidirectional temporal-reversal (A ↔ B) augmentation across 10,077 original and 15,115 augmented pairs (468- to 714-token vocabularies). Reorganized into an installable <code>src/urban_change</code> package without legacy MMCV coupling, featuring safe checkpoint loading, token-identity vocabulary transplantation, staged training with full RNG/scaler resume, and a shared predictor across CLI, Streamlit and bounded FastAPI endpoints.</p><p>Verified by 31 passing pytest/integration checks, numerical equivalence within 3.81e-6 against the legacy graph, and SHA-256 verified CPU inference on real chronological and reversed LEVIR-MCI test pairs. Full-dataset benchmark reproduction, GPU/AMP training and mixed upstream licensing (MIT Change-Agent/COCO-caption plus NVIDIA non-commercial SegFormer terms) remain documented boundaries.</p><a href="https://github.com/Sushant-Nemade/urban-change-detection-captioning/blob/main/docs/results.md">Validation &amp; results</a><br><a href="https://github.com/Sushant-Nemade/urban-change-detection-captioning/blob/main/docs/architecture.md">Architecture &amp; protocol</a><br><a href="https://huggingface.co/sushantnemade/MCI_augmented">Model weights (Hugging Face)</a><br><a href="https://huggingface.co/datasets/sushantnemade/LEVIR-MCI-augmented">Augmented dataset (Hugging Face)</a></details>
+        </article>
+        <article class="project compact-project" data-project="ai-werewolf-arena" data-category="Applied AI and computer vision">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/ai-werewolf-arena">AI Werewolf Arena</a></h4>
+          <p class="project-status">Tested multi-agent system</p>
+          <p class="project-summary">Multi-agent social deduction arena with per-seat information asymmetry, TF-IDF episodic RAG memory, fail-closed structured-output guardrails, decision tracing and an ELO evaluation harness.</p>
+          <p class="project-stack">Python · FastAPI · React · TypeScript · Ollama / OpenAI · WebSockets</p>
+          <details class="case-study"><summary>Scope</summary><p>Seven autonomous agents run a perceive, remember, reason and act loop over isolated player views, with bounded retries that fail closed on invalid schema or domain targets. Includes 27 deterministic offline tests and a batch simulator for ELO and role win-rate comparison. Session state is in-memory and the default mock provider is a deterministic heuristic baseline.</p><a href="https://github.com/Sushant-Nemade/ai-werewolf-arena#testing--ci">Architecture &amp; verification</a></details>
+        </article>
+        <article class="project compact-project" data-project="neurodrive" data-category="Applied AI and computer vision">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/neurodrive">NeuroDrive</a></h4>
+          <p class="project-status">Interactive simulation</p>
+          <p class="project-summary">Browser-based self-driving neuroevolution arena where 180 ray-cast sensor agents evolve neural policies live via tournament selection, crossover and mutation with zero ML frameworks.</p>
+          <p class="project-stack">TypeScript · React · HTML5 Canvas · Neuroevolution · Genetic algorithm</p>
+          <details class="case-study"><summary>Scope</summary><p>Hand-written 8→12→2 feedforward policy network, 7-ray obstacle perception, bicycle-style physics and background evolution across training, manual drive and champion autopilot modes. Runs entirely client-side with localStorage policy checkpointing and JSON export/import.</p><a href="https://github.com/Sushant-Nemade/neurodrive#how-it-works">Simulation design</a></details>
+        </article>
+      </div>
+    </section>
     <section class="catalog-group" aria-labelledby="automation-heading">
       <h3 class="catalog-heading" id="automation-heading">Responsible automation</h3>
       <div class="catalog-grid">
@@ -302,7 +328,7 @@
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">Private AI-assisted article drafts, digest-bound human approval, reliable local publication and a sanitized static reader.</p>
           <p class="project-stack">Python · LangGraph · Groq adapter · Static HTML / JavaScript · GitHub Actions</p>
-          <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/Multi-Agentic-Blog-Generation">Hema Kalyan Murapaka's MIT-licensed BlogBoard</a>. Offline and desktop/mobile tests pass; the article preview is a synthetic fixture. Live Groq, search and R2 integrations remain unverified.</p><a href="https://github.com/Sushant-Nemade/ai-blog-publisher/blob/main/docs/RELEASE_STATUS.md">Release evidence</a></details>
+          <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/Multi-Agentic-Blog-Generation">Hema Kalyan Murapaka's MIT-licensed BlogBoard</a>. Offline and desktop/mobile tests pass; the article preview is a synthetic fixture. Live Groq, search and R2 integrations remain unverified.</p><a href="https://github.com/Sushant-Nemade/ai-blog-publisher/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/ai-blog-publisher/">Open public reader</a></details>
         </article>
       </div>
     </section>
@@ -321,14 +347,14 @@
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">GitHub audience snapshots, rename-aware relationship history, refollow-safe lost followers and public repository metrics.</p>
           <p class="project-stack">Python · FastAPI · SQLite · TypeScript · Chart.js</p>
-          <details class="case-study"><summary>Scope</summary><p>Original code inspired by <a href="https://github.com/KalyanM45/GitPulse">GitPulse's documented concept</a>; upstream source was not imported because its license file could not be verified. One public REST sync was tested. The public dashboard uses fictional data; private API hosting remains unverified.</p><a href="https://github.com/Sushant-Nemade/gitpulse/blob/main/docs/RELEASE_STATUS.md">Release evidence</a></details>
+          <details class="case-study"><summary>Scope</summary><p>Original code inspired by <a href="https://github.com/KalyanM45/GitPulse">GitPulse's documented concept</a>; upstream source was not imported because its license file could not be verified. One public REST sync was tested. The public dashboard uses fictional data; private API hosting remains unverified.</p><a href="https://github.com/Sushant-Nemade/gitpulse/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/gitpulse/">Open sample dashboard</a></details>
         </article>
         <article class="project compact-project" data-project="market-insight" data-category="Data applications">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/MarketInsight">Market Insight</a></h4>
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">Source-dated financial research, comparative statements, price charts and private report history with optional grounded AI synthesis.</p>
           <p class="project-stack">Python · FastAPI · React · Chart.js · yfinance · SQLite</p>
-          <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/MarketInsight">Hema Kalyan Murapaka's GPLv3 MarketInsight</a>. Complete sample/API workflows, Linux/Windows CI, package checks and a non-root container pass. Real Yahoo quote/history was verified; paid AI inference remains unverified. The public workspace uses fictional data and provides research, not investment advice.</p><a href="https://github.com/Sushant-Nemade/MarketInsight/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/MarketInsight/">Open synthetic reference</a></details>
+          <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/MarketInsight">Hema Kalyan Murapaka's GPLv3 MarketInsight</a>. Complete sample/API workflows, Linux/Windows CI, package checks and a non-root container pass. Real Yahoo quote/history was verified; paid AI inference remains unverified. The public workspace uses fictional data and provides research, not investment advice.</p><a href="https://github.com/Sushant-Nemade/MarketInsight/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/MarketInsight/">Open synthetic reference</a><br><a href="https://github.com/Sushant-Nemade/MarketInsight/releases/tag/v0.2.0-reference">Download reference release</a></details>
         </article>
         <article class="project compact-project" data-project="doclify" data-category="Developer tools">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/Doclify">Doclify</a></h4>
@@ -342,14 +368,14 @@
           <p class="project-status">Tested alpha tool</p>
           <p class="project-summary">Read-only intake checks for third-party apps and binaries: evidence-backed SBOM, known vulnerabilities, Electron hardening, an update check between versions and an approve/review/reject policy gate.</p>
           <p class="project-stack">Python · CycloneDX · SARIF · OSV.dev · GitHub Actions</p>
-          <details class="case-study"><summary>Scope</summary><p>Original code. Go build info, npm/ASAR and NuGet inventories plus Electron fuse and webPreferences rules; vulnerability lookup is opt-in and sends only package name, version and ecosystem. v0.2.0 adds an update check that gates on new vulnerabilities, weakened fuses, new network endpoints and new native modules. Linux/Windows CI and live-OSV action runs on Linux, Windows and macOS pass against fictional demos; published on the GitHub Marketplace. Findings are version-level evidence, not reachability analysis.</p><a href="https://github.com/Sushant-Nemade/software-intake-gatekeeper#verification">Verification evidence</a><br><a href="https://github.com/marketplace/actions/software-intake-gatekeeper">GitHub Marketplace action</a><br><a href="https://pypi.org/project/software-intake-gatekeeper/">PyPI package</a></details>
+          <details class="case-study"><summary>Scope</summary><p>Original code. Go build info, npm/ASAR and NuGet inventories plus Electron fuse and webPreferences rules; vulnerability lookup is opt-in and sends only package name, version and ecosystem. Releases through v0.2.2 add an update check between versions that gates on new vulnerabilities, weakened fuses, string-literal network endpoints and new native modules with stable-path bundle matching. Linux/Windows CI and live-OSV action runs on Linux, Windows and macOS pass against fictional demos; published on PyPI and the GitHub Marketplace with PEP 740 provenance attestations. Findings are version-level evidence, not reachability analysis.</p><a href="https://github.com/Sushant-Nemade/software-intake-gatekeeper#verification">Verification evidence</a><br><a href="https://github.com/marketplace/actions/software-intake-gatekeeper">GitHub Marketplace action</a><br><a href="https://pypi.org/project/software-intake-gatekeeper/">PyPI package</a></details>
         </article>
         <article class="project compact-project" data-project="privacy-flow-inspector" data-category="Developer tools">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/privacy-flow-inspector">Privacy Flow Inspector</a></h4>
           <p class="project-status">Tested alpha tool</p>
           <p class="project-summary">Offline privacy gate for recorded web traffic: which personal data leaves the browser, to which first or third party, and how, with redacted evidence.</p>
           <p class="project-stack">Python · HAR · Playwright · SARIF · GitHub Actions</p>
-          <details class="case-study"><summary>Scope</summary><p>Original code. Test-persona matching including hashed and Base64 forms, checksum-verified IBAN, Steuer-ID and KVNR detectors, health-data fields and a GDPR-oriented data-flow map. Reports never contain raw values and the redacted HAR export is self-checked. CI re-records a fictional demo shop with real Chromium. Technical evidence for privacy reviews, not legal advice.</p><a href="https://github.com/Sushant-Nemade/privacy-flow-inspector#verification">Verification evidence</a><br><a href="https://github.com/marketplace/actions/privacy-flow-inspector">GitHub Marketplace action</a><br><a href="https://pypi.org/project/privacy-flow-inspector/">PyPI package</a></details>
+          <details class="case-study"><summary>Scope</summary><p>Original code. Test-persona matching including hashed and Base64 forms, checksum-verified IBAN, Steuer-ID and KVNR detectors, health-data fields and a GDPR-oriented data-flow map; v0.2.0 always inventories third-party eTLD+1 connections alongside opt-in connection gating. Reports never contain raw values and the redacted HAR export is self-checked. CI re-records a fictional demo shop with real Chromium. Technical evidence for privacy reviews, not legal advice.</p><a href="https://github.com/Sushant-Nemade/privacy-flow-inspector#verification">Verification evidence</a><br><a href="https://github.com/marketplace/actions/privacy-flow-inspector">GitHub Marketplace action</a><br><a href="https://pypi.org/project/privacy-flow-inspector/">PyPI package</a></details>
         </article>
       </div>
     </section>
@@ -398,7 +424,7 @@
       <ul>
         <li><a data-repository data-repository-group="Portfolio engineering" href="https://github.com/Sushant-Nemade/Sushant-Nemade">GitHub Profile Systems Console</a> — generated profile assets and automation.</li>
         <li><a data-repository data-repository-group="Portfolio engineering" href="https://github.com/Sushant-Nemade/sushant-nemade.github.io">Interactive Portfolio Source</a> — HTML, CSS and JavaScript.</li>
-        <li><a data-repository data-repository-group="Portfolio engineering" href="https://github.com/Sushant-Nemade/ai-project-gallery">AI Project Gallery</a> - categorized projects, attribution and release evidence.</li>
+        <li><a data-repository data-repository-group="Portfolio engineering" href="https://github.com/Sushant-Nemade/ai-project-gallery">AI Project Gallery</a> — categorized projects, attribution and release evidence.</li>
         <li><a data-repository data-repository-group="Learning archive" href="https://github.com/Sushant-Nemade/dsss_homework_2">DSSS Homework 2</a> — earlier Python mathematics-quiz coursework.</li>
       </ul>
     </details>
@@ -579,13 +605,14 @@ const CONTENT = {
 
   research: [
     h('research and professional case studies'), GAP,
-    '<span class="role">Urban change detection and change captioning</span>  ' + m("master's thesis"),
-    m('Fraunhofer IIS — July 2025 to January 2026'),
-    'Designed and evaluated AI-assisted pipelines for bi-temporal satellite imagery,',
-    'benchmarked on LEVIR-MCI. Looked at accuracy, directional bias and augmentation,',
-    'applied retrieval and RAG-style patterns to unstructured data, and turned the',
-    'evaluation into evidence-based adoption recommendations.',
-    m('python · pytorch · computer vision · rag patterns · model benchmarking'),
+    '<span class="role"><a href="https://github.com/Sushant-Nemade/urban-change-detection-captioning">Urban change detection and change captioning</a></span>  ' + m("master's thesis"),
+    m('FAU Erlangen-Nürnberg & Fraunhofer IIS — July 2025 to January 2026'),
+    'Adapted the dual-head SegFormer MiT-B1 and Transformer MCI model for bi-temporal',
+    'satellite road/building change segmentation and natural-language captioning on',
+    'LEVIR-MCI (10,077 original and 15,115 augmented pairs). Added bidirectional',
+    'temporal-reversal (A ↔ B) augmentation for removal/deconstruction cases, a clean',
+    'CLI/Streamlit/FastAPI package with 31 pytest checks and SHA-256 verified weights.',
+    m('<a href="https://github.com/Sushant-Nemade/urban-change-detection-captioning">repository</a> · <a href="https://huggingface.co/sushantnemade/MCI_augmented">model weights</a> · <a href="https://huggingface.co/datasets/sushantnemade/LEVIR-MCI-augmented">dataset</a> · pytorch · segformer · transformer'),
     GAP,
     '<span class="role">Enterprise GenAI and agentic automation</span>',
     m('March to June 2026'),
@@ -632,11 +659,12 @@ const CONTENT = {
     kv('engineering', 'Git, GitLab, MLflow, code review, CI/CD, experiment tracking'),
     GAP,
     h('public project engineering'), GAP,
-    kv('ai services', 'FastAPI, Ollama, local inference, RAG evaluation, guardrails'),
-    kv('web', 'TypeScript, Next.js, Express, browser-local processing'),
-    kv('persistence', 'PostgreSQL, SQLite, Prisma, Alembic migrations'),
-    kv('boundaries', 'API authentication, signed webhooks, typed contracts, fail-closed QA'),
-    kv('operations', 'Docker configuration, GitHub Actions, Prometheus/Grafana telemetry'),
+    kv('ai services', 'FastAPI, Ollama, LangGraph, local inference, RAG evaluation, guardrails'),
+    kv('vision and ml', 'PyTorch, SegFormer MiT-B1, Transformer decoders, neuroevolution'),
+    kv('web', 'TypeScript, React, Next.js, Express, Chart.js, browser-local processing'),
+    kv('persistence', 'PostgreSQL, SQLite, Prisma, Alembic migrations, SHA-256 caching'),
+    kv('boundaries', 'API authentication, signed webhooks, CycloneDX/SARIF, HAR privacy gates'),
+    kv('operations', 'Docker configuration, GitHub Actions, PyPI provenance, Prometheus/Grafana'),
     m('Implemented in public repositories; deployment and integration limits are documented.'),
     GAP,
     h('working knowledge'), GAP,
@@ -658,6 +686,7 @@ const CONTENT = {
     '<span class="role">M.Sc. Information and Communication Technology</span>',
     m('Friedrich-Alexander-Universität Erlangen-Nürnberg — since October 2022'),
     kv('grade', '1.8'),
+    kv('thesis', '<a href="https://github.com/Sushant-Nemade/urban-change-detection-captioning">Urban Change Detection &amp; Change Captioning</a> (bi-temporal satellite vision-language)'),
     'Modules include Advanced Topics in Deep Learning, Pattern Recognition and',
     'Analysis, Machine Learning in Signal Processing, and Connected Mobility and',
     'Autonomous Driving.',
