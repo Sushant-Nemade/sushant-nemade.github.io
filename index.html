@@ -70,6 +70,8 @@
   .project-summary{font-size:13px;line-height:1.65;margin:0 0 12px}
   .project-stack{font-size:11.5px;line-height:1.65;color:var(--mute);margin:0 0 16px;overflow-wrap:anywhere}
   .repo-link{font-size:12px;font-weight:700}
+  .project-demo{display:flex;flex-wrap:wrap;gap:8px 14px;margin:12px 0 0;font-size:12px}
+  .project-demo a{font-weight:700}
   .case-study{margin-top:16px;font-size:12px}
   summary{cursor:pointer;font-weight:700;width:fit-content;max-width:100%}
   summary:hover{color:var(--signal)}
@@ -181,6 +183,7 @@
     <nav class="hero-links" aria-label="Portfolio navigation">
       <a href="#featured">Selected work</a>
       <a href="#catalog">Project catalog</a>
+      <a href="https://sushant-ai-demos.pages.dev/">Public demos</a>
       <a href="#terminal">Experience</a>
       <a href="https://github.com/Sushant-Nemade">GitHub</a>
       <a href="#contact">Contact</a>
@@ -328,12 +331,14 @@
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">Source-linked trip planning, illustrative group budgets, editable activity choices and browser/private saved itineraries for Paris, Lisbon and Kyoto.</p>
           <p class="project-stack">Python &middot; FastAPI &middot; JavaScript &middot; SQLite &middot; Optional Groq / Open-Meteo</p>
+          <p class="project-demo"><a href="https://sushant-ai-demos.pages.dev/TravelBrain/">Open public demo</a><span>Cloudflare Pages</span></p>
           <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/TravelBrain-Multi-Agent-AI-Travel-Planner">Hema Kalyan Murapaka's GPLv3 TravelBrain</a>. Twenty-seven Python tests, 27 cross-runtime planning combinations, 14 browser cases, installed-package checks and audits pass. Live Open-Meteo weather was verified; Groq inference remains unverified. Prices are illustrative; no flight/hotel availability, booking or accessibility guarantee is provided.</p><a href="https://github.com/Sushant-Nemade/TravelBrain/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/TravelBrain/">Open planning reference</a><br><a href="https://github.com/Sushant-Nemade/TravelBrain/releases/tag/v0.2.1-reference">Download reference release</a></details>
         </article>
         <article class="project compact-project" data-project="ai-blog-publisher" data-category="Responsible automation">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/ai-blog-publisher">AI Blog Publisher</a></h4>
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">Private AI-assisted article drafts, digest-bound human approval, reliable local publication and a sanitized static reader.</p>
+          <p class="project-demo"><a href="https://sushant-ai-demos.pages.dev/ai-blog-publisher/">Open public demo</a><span>Cloudflare Pages</span></p>
           <p class="project-stack">Python · LangGraph · Groq adapter · Static HTML / JavaScript · GitHub Actions</p>
           <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/Multi-Agentic-Blog-Generation">Hema Kalyan Murapaka's MIT-licensed BlogBoard</a>. Offline and desktop/mobile tests pass; the article preview is a synthetic fixture. Live Groq, search and R2 integrations remain unverified.</p><a href="https://github.com/Sushant-Nemade/ai-blog-publisher/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/ai-blog-publisher/">Open public reader</a></details>
         </article>
@@ -353,6 +358,7 @@
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/gitpulse">GitPulse Audience Workspace</a></h4>
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">GitHub audience snapshots, rename-aware relationship history, refollow-safe lost followers and public repository metrics.</p>
+          <p class="project-demo"><a href="https://sushant-ai-demos.pages.dev/gitpulse/">Open public demo</a><span>Cloudflare Pages</span></p>
           <p class="project-stack">Python · FastAPI · SQLite · TypeScript · Chart.js</p>
           <details class="case-study"><summary>Scope</summary><p>Original code inspired by <a href="https://github.com/KalyanM45/GitPulse">GitPulse's documented concept</a>; upstream source was not imported because its license file could not be verified. One public REST sync was tested. The public dashboard uses fictional data; private API hosting remains unverified.</p><a href="https://github.com/Sushant-Nemade/gitpulse/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/gitpulse/">Open sample dashboard</a></details>
         </article>
@@ -360,6 +366,7 @@
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/MarketInsight">Market Insight</a></h4>
           <p class="project-status">Tested reference implementation</p>
           <p class="project-summary">Source-dated financial research, comparative statements, price charts and private report history with optional grounded AI synthesis.</p>
+          <p class="project-demo"><a href="https://sushant-ai-demos.pages.dev/MarketInsight/">Open public demo</a><span>Cloudflare Pages</span></p>
           <p class="project-stack">Python · FastAPI · React · Chart.js · yfinance · SQLite</p>
           <details class="case-study"><summary>Scope</summary><p>Adapted from <a href="https://github.com/KalyanM45/MarketInsight">Hema Kalyan Murapaka's GPLv3 MarketInsight</a>. Complete sample/API workflows, Linux/Windows CI, package checks and a non-root container pass. Real Yahoo quote/history was verified; paid AI inference remains unverified. The public workspace uses fictional data and provides research, not investment advice.</p><a href="https://github.com/Sushant-Nemade/MarketInsight/blob/main/docs/RELEASE_STATUS.md">Release evidence</a><br><a href="https://sushant-nemade.github.io/MarketInsight/">Open synthetic reference</a><br><a href="https://github.com/Sushant-Nemade/MarketInsight/releases/tag/v0.2.0-reference">Download reference release</a></details>
         </article>
