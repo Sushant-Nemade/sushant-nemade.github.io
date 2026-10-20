@@ -184,6 +184,7 @@
       <a href="#featured">Selected work</a>
       <a href="#catalog">Project catalog</a>
       <a href="https://sushant-ai-demos.pages.dev/">Public demos</a>
+      <a href="https://sushant-nemade.github.io/airbnb-price-workbench/">NYC price model</a>
       <a href="#terminal">Experience</a>
       <a href="https://github.com/Sushant-Nemade">GitHub</a>
       <a href="#contact">Contact</a>
@@ -272,6 +273,14 @@
     <section class="catalog-group" aria-labelledby="vision-heading">
       <h3 class="catalog-heading" id="vision-heading">Applied AI, computer vision and simulation</h3>
       <div class="catalog-grid">
+        <article class="project compact-project" data-project="airbnb-prices" data-category="Applied AI and computer vision">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/airbnb-price-workbench">Airbnb Price Workbench</a></h4>
+          <p class="project-status">Evaluated historical ML reference</p>
+          <p class="project-summary">NYC2019 price modeling with host-disjoint training/evaluation, calibrated uncertainty, actual browser ONNX inference, local batch CSV and saved scenarios.</p>
+          <p class="project-stack">Python &middot; scikit-learn &middot; ONNX Runtime &middot; TypeScript &middot; FastAPI</p>
+          <p class="project-demo"><a href="https://sushant-nemade.github.io/airbnb-price-workbench/">Open public model</a><span>GitHub Pages / browser inference</span></p>
+          <details class="case-study"><summary>Scope</summary><p>Original MIT code/model inspired by the <a href="https://github.com/KalyanM45/End-to-End-Airbnb-Price-Prediction">gallery reference concept</a>; no unlicensed upstream source, saved model, assets or data imported. Separately reviewed Kaggle NYC2019 version3 data, publisher CC0; raw listings are not redistributed. Host-disjoint test MAE $48.80 versus $52.66 borough/room median, R-squared0.357; historical interval coverage90.81%, not an individual/current-price guarantee. Eighteen Python tests, sixteen browser cases, thirty sklearn/browser parity scenarios, installed packages, Linux/Windows/container checks and actual-data training reproduction pass. No current quotes, bookings, revenue optimization or housing/lending decisions are claimed.</p><a href="https://github.com/Sushant-Nemade/airbnb-price-workbench/blob/main/docs/MODEL_CARD.md">Model card &amp; evaluation</a><br><a href="https://github.com/Sushant-Nemade/airbnb-price-workbench/releases/tag/v0.1.0-reference">Download verified model/source release</a></details>
+        </article>
         <article class="project compact-project" data-project="urban-change-detection-captioning" data-category="Applied AI and computer vision">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/urban-change-detection-captioning">Urban Change Detection &amp; Change Captioning</a></h4>
           <p class="project-status">Master's thesis · tested research implementation</p>
