@@ -273,6 +273,14 @@
     <section class="catalog-group" aria-labelledby="vision-heading">
       <h3 class="catalog-heading" id="vision-heading">Applied AI, computer vision and simulation</h3>
       <div class="catalog-grid">
+        <article class="project compact-project" data-project="enterprise-hybrid-rag-workbench" data-category="Applied AI and computer vision">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/enterprise-hybrid-rag-workbench">Enterprise Hybrid RAG Workbench</a></h4>
+          <p class="project-status">Evaluated hybrid retrieval &amp; RBAC reference</p>
+          <p class="project-summary">Four-mode hybrid retrieval (SQLite FTS5 BM25, 384-d ONNX embeddings, Reciprocal Rank Fusion k=60 and Cross-Encoder reranking), pre-retrieval RBAC, freshness gating, passage-level NLI claim verification and SHA-256 digest-bound HITL review.</p>
+          <p class="project-stack">Python &middot; FastAPI &middot; SQLite FTS5 &middot; ONNX Runtime &middot; Pydantic v2</p>
+          <p class="project-demo"><a href="https://sushant-nemade.github.io/enterprise-hybrid-rag-workbench/">Open public workbench</a><span>GitHub Pages / 50-case ablation</span></p>
+          <details class="case-study"><summary>Scope</summary><p>Original MIT reference upgrading lexical PDF QA into a 4-stage hybrid retrieval and governance workbench over 12 synthetic enterprise SOP, procurement, clinical and GDPR documents (30 page chunks) and 50 labelled benchmark cases. Combining FTS5 BM25 and 384-d dense vectors via RRF (k=60) and Cross-Encoder reranking lifts Recall@5 from 0.6471 (lexical-only) to 1.0000, MRR@10 from 0.6324 to 0.9853, NDCG@10 to 0.9891 and NLI passage claim support to 0.9868, with 0.0000 pre-retrieval RBAC leakage across all 50 cases. Local CPU ONNX models and SQLite HITL digest invalidation are verified; external cloud LLM connectors remain unconfigured.</p><a href="https://github.com/Sushant-Nemade/enterprise-hybrid-rag-workbench/blob/main/docs/ARCHITECTURE_DEEP_DIVE.md">Architecture deep dive</a><br><a href="https://github.com/Sushant-Nemade/enterprise-hybrid-rag-workbench/blob/main/docs/MODEL_CARD.md">Model card &amp; ablation report</a></details>
+        </article>
         <article class="project compact-project" data-project="airbnb-prices" data-category="Applied AI and computer vision">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/airbnb-price-workbench">Airbnb Price Workbench</a></h4>
           <p class="project-status">Evaluated historical ML reference</p>
