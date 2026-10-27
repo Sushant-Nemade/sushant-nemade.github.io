@@ -273,6 +273,14 @@
     <section class="catalog-group" aria-labelledby="vision-heading">
       <h3 class="catalog-heading" id="vision-heading">Applied AI, computer vision and simulation</h3>
       <div class="catalog-grid">
+        <article class="project compact-project" data-project="enterprise-hybrid-data-copilot" data-category="Applied AI and computer vision">
+          <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/enterprise-hybrid-data-copilot">Enterprise Hybrid Data Copilot</a></h4>
+          <p class="project-status">Evaluated SQL + RAG decision-support reference</p>
+          <p class="project-summary">Bridges relational SQLite KPI tables and unstructured operational SOPs with pre-query data-freshness gates, AST-validated read-only semantic SQL, deterministic numerical grounding verification and SHA-256 digest-bound HITL workflow approvals.</p>
+          <p class="project-stack">Python &middot; FastAPI &middot; SQLite &middot; TypeScript &middot; Pydantic v2</p>
+          <p class="project-demo"><a href="https://sushant-nemade.github.io/enterprise-hybrid-data-copilot/">Open review console</a><span>GitHub Pages / 40-query Build-vs-Adopt</span></p>
+          <details class="case-study"><summary>Scope</summary><p>Original MIT reference evaluating 40 operational and financial decision-support queries across 4 relational KPI tables and 16 SOP passages. Pre-query freshness and null-ratio gates block stale partitions (legacy_supply_backlog_partition at 222.0h vs 48.0h SLA) with 1.0000 precision. Routing across AST-validated parameterized SELECT templates and hybrid SOP retrieval achieves 1.0000 SQL execution accuracy and 1.0000 numerical parity (versus 0.5100 for ungoverned Prompt-to-SQL and 0.3825 for text-only RAG) while reducing token usage by 83.24%. Includes a transactional SQLite DRAFT -&gt; PENDING_APPROVAL -&gt; APPROVED / REJECTED state machine with automatic data-drift invalidation.</p><a href="https://github.com/Sushant-Nemade/enterprise-hybrid-data-copilot/blob/main/docs/ARCHITECTURE_DEEP_DIVE.md">Architecture deep dive</a><br><a href="https://github.com/Sushant-Nemade/enterprise-hybrid-data-copilot/blob/main/docs/MODEL_CARD.md">Model card &amp; Build-vs-Adopt benchmark</a><br><a href="https://github.com/Sushant-Nemade/enterprise-hybrid-data-copilot/releases/tag/v0.1.0-reference">Download reference release</a></details>
+        </article>
         <article class="project compact-project" data-project="enterprise-hybrid-rag-workbench" data-category="Applied AI and computer vision">
           <h4 class="project-name"><a data-repository href="https://github.com/Sushant-Nemade/enterprise-hybrid-rag-workbench">Enterprise Hybrid RAG Workbench</a></h4>
           <p class="project-status">Evaluated hybrid retrieval &amp; RBAC reference</p>
